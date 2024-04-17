@@ -5,12 +5,6 @@ function validarFormulario() {
     var telefono = document.getElementById('telefono');
     var valid = true;
 
-    if(nombre.textContent.length<2){
-        document.getElementById('errorNombre').textContent = "Este campo no es correcto.";
-        nombre.classList.add('invalid');
-        valid = false;        
-    }
-    
     // Limpiar errores previos
     document.getElementById('errorNombre').textContent = '';
     document.getElementById('errorApellido').textContent = '';
@@ -21,6 +15,29 @@ function validarFormulario() {
     email.classList.remove('invalid');
     telefono.classList.remove('invalid');
 
+    if(nombre.value === "") {
+        document.getElementById('errorNombre').textContent = "Este campo es obligatorio.";
+        nombre.classList.add('invalid');
+        valid = false;
+    }
+
+    if(apellido.value === "") {
+        document.getElementById('errorApellido').textContent = "Este campo es obligatorio.";
+        apellido.classList.add('invalid');
+        valid = false;
+    }
+
+    if(email.value === "" || !email.value.includes('@')) {
+        document.getElementById('errorEmail').textContent = "Ingresa un correo electrónico válido.";
+        email.classList.add('invalid');
+        valid = false;
+    }
+
+    if(telefono.value !== "" && telefono.value.length !== 9) {
+        document.getElementById('errorTelefono').textContent = "El número de teléfono debe tener 9 dígitos.";
+        telefono.classList.add('invalid');
+        valid = false;
+    }
 
     if(valid) {
         alert("Formulario enviado con éxito!");
