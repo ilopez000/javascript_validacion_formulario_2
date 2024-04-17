@@ -15,19 +15,19 @@ function validarFormulario() {
     email.classList.remove('invalid');
     telefono.classList.remove('invalid');
 
-    if(nombre.value === "") {
+    if(nombre.value.length<2) {
         document.getElementById('errorNombre').textContent = "Este campo es obligatorio.";
         nombre.classList.add('invalid');
         valid = false;
     }
 
-    if(apellido.value === "") {
+    if(apellido.value.length<2) {
         document.getElementById('errorApellido').textContent = "Este campo es obligatorio.";
         apellido.classList.add('invalid');
         valid = false;
     }
 
-    if(email.value === "" || !email.value.includes('@')) {
+    if(!email.value.includes('.') || !email.value.includes('@')) {
         document.getElementById('errorEmail').textContent = "Ingresa un correo electrónico válido.";
         email.classList.add('invalid');
         valid = false;
