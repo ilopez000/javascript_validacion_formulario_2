@@ -5,6 +5,12 @@ function validarFormulario() {
     var telefono = document.getElementById('telefono');
     var valid = true;
 
+    if(nombre.textContent.length<2){
+        document.getElementById('errorNombre').textContent = "Este campo no es correcto.";
+        nombre.classList.add('invalid');
+        valid = false;        
+    }
+    
     // Limpiar errores previos
     document.getElementById('errorNombre').textContent = '';
     document.getElementById('errorApellido').textContent = '';
